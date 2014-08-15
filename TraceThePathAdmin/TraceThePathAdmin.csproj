@@ -1,0 +1,1063 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2C73BC08-AF81-4E57-BBE8-1954029740BC}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TraceThePathAdmin</RootNamespace>
+    <AssemblyName>TraceThePathAdmin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PublishDatabases>false</PublishDatabases>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes">
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\MvcApplication1\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TraceThePathAdmin\TraceThePathAdmin\bin\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\MvcApplication1\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SetRouteController.cs" />
+    <Compile Include="Controllers\ViewRouteController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Point.cs" />
+    <Compile Include="Models\AssetInfo.cs" />
+    <Compile Include="Models\RouteCordinates.cs" />
+    <Compile Include="Models\RouteDetails.cs" />
+    <Compile Include="Models\Cordinate.cs" />
+    <Compile Include="Models\Routes.cs" />
+    <Compile Include="Models\RoutesInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\images\marker.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Views\ViewRoute\GetRoutes.cshtml" />
+    <Content Include="Views\ViewRoute\GetLocationInfo.cshtml" />
+    <Content Include="Views\ViewRoute\ViewRoute.cshtml" />
+    <Content Include="Views\SetRoute\SetRoute.cshtml" />
+    <Content Include="Views\SetRoute\CreateRoute.cshtml" />
+    <Content Include="Views\ViewRoute\GetLocationCoordinatesByAssetId.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\app.css" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapcollapse.css" />
+    <Content Include="Content\durandal.css" />
+    <Content Include="Content\ie10mobile.css" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\icon.png" />
+    <Content Include="Content\images\ios-startup-image-landscape.png" />
+    <Content Include="Content\images\ios-startup-image-portrait.png" />
+    <Content Include="Content\storelocator.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\almond-custom.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrapcollapsejs.js" />
+    <Content Include="Scripts\durandal\activator.js" />
+    <Content Include="Scripts\durandal\app.js" />
+    <Content Include="Scripts\durandal\binder.js" />
+    <Content Include="Scripts\durandal\composition.js" />
+    <Content Include="Scripts\durandal\events.js" />
+    <Content Include="Scripts\durandal\plugins\dialog.js" />
+    <Content Include="Scripts\durandal\plugins\history.js" />
+    <Content Include="Scripts\durandal\plugins\http.js" />
+    <Content Include="Scripts\durandal\plugins\observable.js" />
+    <Content Include="Scripts\durandal\plugins\router.js" />
+    <Content Include="Scripts\durandal\plugins\serializer.js" />
+    <Content Include="Scripts\durandal\plugins\widget.js" />
+    <Content Include="Scripts\durandal\system.js" />
+    <Content Include="Scripts\durandal\transitions\entrance.js" />
+    <Content Include="Scripts\durandal\viewEngine.js" />
+    <Content Include="Scripts\durandal\viewLocator.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\authors.txt" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\accelerometer.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\accessible-click-control.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\accessible-click-control.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\accessible-panel.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\accessible-panel.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\accessible.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\all-overlays-google.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\all-overlays-google.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\all-overlays.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\anchor-permalink.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\anchor-permalink.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\animated_panning.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\animator.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\arcgis93rest.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\arcgiscache_ags.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\arcgiscache_direct.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\arcgiscache_jsonp.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\arcims-thematic.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\arcims.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\attribution.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\behavior-fixed-http-gml.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\bing-tiles-restrictedzoom.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\bing-tiles-restrictedzoom.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\bing-tiles.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\bing-tiles.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\bing.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\bootstrap.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\bootstrap.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\boxes-vector.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\boxes.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\browser.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\browser.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\buffer.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cache-read.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cache-read.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cache-write.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cache-write.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\canvas-hit-detection.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\canvas-hit-detection.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\canvas-inspector.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\canvas-inspector.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\canvas.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\canvas.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cartodb-geojson.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\click-handler.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\click.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\clientzoom.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\clientzoom.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\controls.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cql-format.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cql-format.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cross-origin-xml.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cross-origin-xml.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cross-origin.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\cross-origin.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\custom-control.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\custom-style.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\data\4_m_citylights_lg.gif" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\data\tazdem.tiff" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\debug.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\document-drag.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\donut.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\donut.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\drag-feature.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\draw-feature.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\draw-undo-redo.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\draw-undo-redo.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\dynamic-text-layer.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\editing-methods.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\editing-methods.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\editingtoolbar-outside.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\editingtoolbar.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\encoded-polyline.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\events.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\example-list.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\example-list.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\example.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\example.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\feature-events.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\feature-events.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\filter-strategy.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\filter-strategy.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\filter.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\fractional-zoom.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\fullScreen.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\fullScreen.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\fusiontables.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\fusiontables.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\game-accel-ball.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\geojson-reprojected.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\geojson-reprojected.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\geojson.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\geolocation.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\geolocation.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\georss-flickr.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\georss-markers.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\georss.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\georss.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\getfeature-wfs.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\getfeatureinfo-control.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\getfeatureinfo-popup.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\gml-layer.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\gml\line.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\gml\multipoint.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\gml\multipolygon.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\gml\owls.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\gml\point.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\gml\polygon.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\google-static.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\google-static.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\google-v3-alloverlays.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\google-v3-alloverlays.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\google-v3.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\google-v3.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\google.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\graphic-name.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\graphic-name.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\graticule.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\gutter.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\highlight-feature.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\hover-handler.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\image-layer.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\check-round-green.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\check-round-grey.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\list.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\locate.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\marker_shadow.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\minus1.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\mobile-layers.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\mobile-loc.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\mobile-zoombar.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\openlayers.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\popupMatrix.jpg" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\small.jpg" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\thinlong.jpg" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\widelong.jpg" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\img\wideshort.jpg" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\intersects.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\Jugl.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kamap.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kamap.txt" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kinetic.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kinetic.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml-layer.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml-layer.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml-pointtrack.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml-pointtrack.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml-track.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml-track.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\KMLParser.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\label-scale.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\label-scale.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\late-render.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\layer-opacity.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\layerLoadMonitoring.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\layerswitcher.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\light-basic.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\light-basic.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\lite.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mapbox.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mapbox.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mapguide.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mapquest.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mapquest.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mapserver.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mapserver_untiled.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\marker-shadow.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\markerResize.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\markers.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\markersTextLayer.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\measure.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-base.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-drawing.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-drawing.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-jq.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-jq.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-layers.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-layers.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-navigation.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-navigation.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-sencha.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-sencha.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-wmts-vienna.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-wmts-vienna.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile-wmts-vienna.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mobile.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\modify-feature.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mouse-position.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mousewheel-interval.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\multiserver.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\multitouch.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\mvs.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\navigation-control.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\navigation-history.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\navtoolbar-alwaysZoom.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\navtoolbar-outsidemap.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\navtoolbar.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\offline-storage.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\offline-storage.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\openls.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\ordering.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\osm-google.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\osm-google.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\osm-grayscale.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\osm-marker-popup.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\osm-marker-popup.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\osm.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\overviewmap.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\pan-zoom-panels.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\panel.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\point-grid.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\point-grid.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\point-track-markers.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\polar-projections.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\polar-projections.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\popupMatrix.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\regular-polygons.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\resize-features.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\restricted-extent.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\rotate-features.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\select-feature-multilayer.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\select-feature-openpopup.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\select-feature.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\setextent.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\simplify-linestring.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\simplify-linestring.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\single-tile.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\single-tile.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\sld-parser.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\sld.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\sld.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\SLDSelect.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\snap-grid.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\snap-grid.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\snap-split.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\snapping.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\sos.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\spherical-mercator.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\split-feature.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\strategy-bbox.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\strategy-cluster-extended.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\strategy-cluster-extended.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\strategy-cluster-threshold.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\strategy-cluster.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\strategy-paging.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\style-rules.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\style-rules.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\style.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\style.mobile-jq.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\stylemap.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\styles-context.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\styles-rotation.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\styles-unique.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\sundials-spherical-mercator.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\sundials.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\symbolizers-fill-stroke-graphic.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\tasmania\sld-tasmania.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\tasmania\TasmaniaCities.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\tasmania\TasmaniaRoads.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\tasmania\TasmaniaStateBoundaries.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\tasmania\TasmaniaWaterBodies.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\teleportation.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\textfile.txt" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\tile-origin.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\tile-origin.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\tilecache.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\tms.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\transform-feature.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\transition.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\using-proj4js.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\using-proj4js.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid-geography-class.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid-geography-class.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid_twogrids.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid_twogrids.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\vector-features-with-text.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\vector-features.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\vector-formats.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\web-mercator.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\web-mercator.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-filter.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-filter.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-protocol-transactions.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-protocol-transactions.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-protocol.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-reprojection.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-reprojection.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-snap-split.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-spatial-filter.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-spatial-filter.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-states.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wfs-states.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wmc.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wms-long-url.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wms-long-url.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wms-untiled.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wms-v13.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wms.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\WMSDescribeLayerParser.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wmst.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wmts-capabilities.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wmts-capabilities.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wmts-getfeatureinfo.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wmts-getfeatureinfo.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wmts.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wmts.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wps-client.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wps-client.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wps.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wps.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\wrapDateLine.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\xhtml.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\xml.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\xml\features.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\xml\georss-flickr.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\xml\track1.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\xml\wmsdescribelayer.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\xyz-esri.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\yelp-georss.xml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\zoom.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\zoom.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\zoomify.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\zoomLevels.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\blank.gif" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\cloud-popup-relative.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\drag-rectangle-off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\drag-rectangle-on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\east-mini.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\layer-switcher-maximize.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\layer-switcher-minimize.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\marker-blue.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\marker-gold.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\marker-green.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\marker.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\measuring-stick-off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\measuring-stick-on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\north-mini.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\panning-hand-off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\panning-hand-on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\slider.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\south-mini.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\west-mini.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\zoom-minus-mini.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\zoom-plus-mini.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\zoom-world-mini.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\img\zoombar.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\deprecated.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Firebug\errorIcon.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Firebug\firebug.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Firebug\firebug.html" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Firebug\firebug.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Firebug\firebugx.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Firebug\infoIcon.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Firebug\license.txt" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Firebug\readme.txt" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Firebug\warningIcon.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Animation.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\BaseTypes.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\BaseTypes\Bounds.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\BaseTypes\Class.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\BaseTypes\Date.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\BaseTypes\Element.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\BaseTypes\LonLat.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\BaseTypes\Pixel.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\BaseTypes\Size.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Console.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\ArgParser.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Attribution.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Button.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\CacheRead.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\CacheWrite.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\DragFeature.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\DragPan.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\DrawFeature.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\EditingToolbar.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Geolocate.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\GetFeature.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Graticule.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\KeyboardDefaults.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\LayerSwitcher.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Measure.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\ModifyFeature.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\MousePosition.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Navigation.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\NavigationHistory.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\NavToolbar.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\OverviewMap.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Pan.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Panel.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\PanPanel.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\PanZoom.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\PanZoomBar.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Permalink.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\PinchZoom.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Scale.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\ScaleLine.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\SelectFeature.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\SLDSelect.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Snapping.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Split.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\TouchNavigation.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\TransformFeature.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\UTFGrid.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\WMSGetFeatureInfo.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\WMTSGetFeatureInfo.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\Zoom.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\ZoomBox.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\ZoomIn.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\ZoomOut.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\ZoomPanel.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Control\ZoomToMaxExtent.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Events.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Events\buttonclick.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Events\featureclick.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Feature.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Feature\Vector.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Filter.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Filter\Comparison.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Filter\FeatureId.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Filter\Function.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Filter\Logical.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Filter\Spatial.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\ArcXML.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\ArcXML\Features.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\Atom.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\Context.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\CQL.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\CSWGetDomain.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\CSWGetDomain\v2_0_2.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\CSWGetRecords.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\CSWGetRecords\v2_0_2.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\EncodedPolyline.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\Filter.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\Filter\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\Filter\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\Filter\v1_1_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\GeoJSON.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\GeoRSS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\GML.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\GML\Base.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\GML\v2.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\GML\v3.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\GPX.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\JSON.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\KML.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\OGCExceptionReport.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\OSM.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\OWSCommon.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\OWSCommon\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\OWSCommon\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\OWSCommon\v1_1_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\OWSContext.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\OWSContext\v0_3_1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\QueryStringFilter.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\SLD.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\SLD\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\SLD\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\SLD\v1_0_0_GeoServer.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\SOSCapabilities.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\SOSCapabilities\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\SOSGetFeatureOfInterest.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\SOSGetObservation.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\Text.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WCSCapabilities.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WCSCapabilities\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WCSCapabilities\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WCSCapabilities\v1_1_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WCSGetCoverage.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFSCapabilities.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFSCapabilities\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFSCapabilities\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFSCapabilities\v1_1_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFSDescribeFeatureType.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFST.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFST\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFST\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WFST\v1_1_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WKT.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMC.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMC\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMC\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMC\v1_1_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSCapabilities.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSCapabilities\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSCapabilities\v1_1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSCapabilities\v1_1_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSCapabilities\v1_1_1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSCapabilities\v1_1_1_WMSC.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSCapabilities\v1_3.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSCapabilities\v1_3_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSDescribeLayer.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSDescribeLayer\v1_1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMSGetFeatureInfo.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMTSCapabilities.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WMTSCapabilities\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WPSCapabilities.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WPSCapabilities\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WPSDescribeProcess.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\WPSExecute.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\XLS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\XLS\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\XLS\v1_1_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\XML.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Format\XML\VersionedOGC.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry\Collection.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry\Curve.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry\LinearRing.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry\LineString.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry\MultiLineString.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry\MultiPoint.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry\MultiPolygon.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry\Point.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Geometry\Polygon.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Box.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Click.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Drag.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Feature.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Hover.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Keyboard.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\MouseWheel.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Path.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Pinch.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Point.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\Polygon.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Handler\RegularPolygon.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Icon.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Kinetic.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\ar.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\be-tarask.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\bg.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\br.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\ca.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\cs-CZ.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\da-DK.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\de.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\el.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\en-CA.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\en.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\es.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\fi.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\fr.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\fur.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\gl.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\gsw.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\hr.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\hsb.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\hu.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\ia.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\id.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\io.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\is.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\it.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\ja.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\km.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\ksh.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\lt.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\nb.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\nds.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\nl.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\nn.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\oc.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\pl.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\pt-BR.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\pt.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\ro.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\ru.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\sk.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\sv-SE.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\te.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\vi.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\zh-CN.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Lang\zh-TW.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\ArcGIS93Rest.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\ArcGISCache.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\ArcIMS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Bing.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Boxes.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\EventPane.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\FixedZoomLevels.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\GeoRSS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Google.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Google\v3.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Grid.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\HTTPRequest.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Image.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\KaMap.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\KaMapCache.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\MapGuide.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\MapServer.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Markers.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\OSM.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\PointGrid.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\PointTrack.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\SphericalMercator.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Text.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\TileCache.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\TMS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\UTFGrid.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Vector.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Vector\RootContainer.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\WMS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\WMTS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\WorldWind.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\XYZ.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Layer\Zoomify.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Map.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Marker.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Marker\Box.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Popup.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Popup\Anchored.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Popup\Framed.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Popup\FramedCloud.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Projection.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\CSW.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\CSW\v2_0_2.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\HTTP.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\Script.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\SOS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\SOS\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\WFS.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\WFS\v1.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\WFS\v1_0_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Protocol\WFS\v1_1_0.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Renderer.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Renderer\Canvas.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Renderer\Elements.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Renderer\SVG.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Renderer\VML.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Request.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Request\XMLHttpRequest.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Rule.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\SingleFile.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Spherical.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Strategy.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Strategy\BBOX.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Strategy\Cluster.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Strategy\Filter.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Strategy\Fixed.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Strategy\Paging.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Strategy\Refresh.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Strategy\Save.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Style.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Style2.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\StyleMap.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Symbolizer.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Symbolizer\Line.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Symbolizer\Point.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Symbolizer\Polygon.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Symbolizer\Raster.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Symbolizer\Text.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Tile.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\TileManager.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Tile\Image.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Tile\Image\IFrame.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Tile\UTFGrid.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Tween.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Util.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\Util\vendorPrefix.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\WPSClient.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\OpenLayers\WPSProcess.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Rico\Color.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Rico\Corner.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\lib\Rico\license.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\license.txt" />
+    <Content Include="Scripts\OpenLayers-2.13.1\licenses\APACHE-2.0.txt" />
+    <Content Include="Scripts\OpenLayers-2.13.1\licenses\BSD-LICENSE.txt" />
+    <Content Include="Scripts\OpenLayers-2.13.1\licenses\MIT-LICENSE.txt" />
+    <Content Include="Scripts\OpenLayers-2.13.1\OpenLayers.debug.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\OpenLayers.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\OpenLayers.light.debug.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\OpenLayers.light.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\OpenLayers.mobile.debug.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\OpenLayers.mobile.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\google.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\google.tidy.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\ie6-style.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\ie6-style.tidy.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\add_point_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\add_point_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\blank.gif" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\close.gif" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\drag-rectangle-off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\drag-rectangle-on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\draw_line_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\draw_line_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\draw_point_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\draw_point_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\draw_polygon_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\draw_polygon_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\editing_tool_bar.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\move_feature_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\move_feature_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\navigation_history.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\overview_replacement.gif" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\pan-panel-NOALPHA.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\pan-panel.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\panning-hand-off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\panning-hand-on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\pan_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\pan_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\remove_point_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\remove_point_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\ruler.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\save_features_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\save_features_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\view_next_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\view_next_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\view_previous_off.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\view_previous_on.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\zoom-panel-NOALPHA.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\img\zoom-panel.png" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\style.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\style.mobile.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\style.mobile.tidy.css" />
+    <Content Include="Scripts\OpenLayers-2.13.1\theme\default\style.tidy.css" />
+    <Content Include="Scripts\panel.js" />
+    <Content Include="Scripts\q.js" />
+    <Content Include="Scripts\q.min.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\text.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="weyland-config.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <None Include="Scripts\breeze.intellisense.js" />
+    <Content Include="Scripts\breeze.debug.js" />
+    <Content Include="Scripts\breeze.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\knockout-2.3.0.debug.js" />
+    <Content Include="Scripts\knockout-2.3.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\OpenLayers-2.13.1\.gitignore" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\data\line.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\data\point.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\data\poly.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\data\roads.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\geojson-reprojected.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml-track.kml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml\lines.kml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml\styles.kml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\kml\sundials.kml" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\osm\sutton_coldfield.osm" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\proxy.cgi" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\bio_utfgrid\1\0\0.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\bio_utfgrid\1\0\1.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\bio_utfgrid\1\0\2.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\bio_utfgrid\1\1\0.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\bio_utfgrid\1\1\1.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\bio_utfgrid\1\1\2.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\bio_utfgrid\1\2\0.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\bio_utfgrid\1\2\1.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\bio_utfgrid\1\2\2.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\0\0\0.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\1\0\0.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\1\0\1.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\1\1\0.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\1\1\1.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\0\0.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\0\1.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\0\2.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\0\3.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\1\0.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\1\1.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\1\2.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\1\3.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\2\0.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\2\1.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\2\2.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\2\3.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\3\0.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\3\1.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\3\2.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\geography-class\2\3\3.grid.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\world_utfgrid\1\0\0.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\world_utfgrid\1\0\1.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\world_utfgrid\1\0\2.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\world_utfgrid\1\1\0.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\world_utfgrid\1\1\1.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\world_utfgrid\1\1\2.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\world_utfgrid\1\2\0.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\world_utfgrid\1\2\1.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\examples\utfgrid\world_utfgrid\1\2\2.json" />
+    <Content Include="Scripts\OpenLayers-2.13.1\readme.md" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\homepage.cshtml" />
+    <Content Include="Views\Home\_splash.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SetRoute\GetRouteCoordinates.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>9400</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50633/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.                                                                                      
+       Other similar extension points exist, see Microsoft.Common.targets.                                                                                                                
+  <Target Name="BeforeBuild">                                                                                                                                                             
+  </Target>                                                                                                                                                                               
+  <Target Name="AfterBuild">                                                                                                                                                              
+  </Target> -->
+</Project>
