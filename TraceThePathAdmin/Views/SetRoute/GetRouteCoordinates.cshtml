@@ -1,0 +1,109 @@
+﻿@model TraceThePathAdmin.Models.RouteCordinates
+
+@{
+    ViewBag.Title = "GetRouteCoordinatesByRouteId";
+    var viewDataPointsByRouteId = ViewData["RouteCoordinates"] as TraceThePathAdmin.Models.RouteCordinates;
+}
+
+
+<div class="col-xs-12 col-sm-9">
+
+    <div id="map" class="olMap" style='width: 1300px; height: 700px;'></div>
+
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+            LoadMapWithRouteIdAndCoordinates();
+    })
+
+
+    function LoadMapWithRouteIdAndCoordinates() {
+        alert("entering load map in getloccoordinatebyassetid");
+        var map, vectors, controls, feature, data, controls;
+        //logger.log(title + 'has been Activated', null, title, true);
+
+        //logger.log('init1 view route entry');
+        //map = new OpenLayers.Map('map');
+        var osm = new OpenLayers.Layer.OSM("OpenLayers OSM");
+
+        // allow testing of specific renderers via "?renderer=Canvas", etc
+        var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
+        renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
+
+        vectors = new OpenLayers.Layer.Vector("Vector Layer", {
+            renderers: renderer
+        });
+
+
+        // The overlay layer for our marker, with a simple diamond as symbol
+        var overlay = new OpenLayers.Layer.Vector('Overlay', {
+            styleMap: new OpenLayers.StyleMap({
+                externalGraphic: "../../../tracethepathadmin/Content/images/marker.png",
+                graphicWidth: 20, graphicHeight: 24, graphicYOffset: -24,
+                title: '${tooltip}'
+            })
+        });
+
+
+        var rDataLat = "12.971599";
+        var rDataLon = "77.594563";
+
+        var myLocation = new OpenLayers.Geometry.Point(rDataLon, rDataLat)
+                .transform('EPSG:4326', 'EPSG:3857');
+
+        // We add the marker with a tooltip text to the overlay
+        overlay.addFeatures([
+            new OpenLayers.Feature.Vector(myLocation, { tooltip: 'OpenLayers' })
+        ]);
+
+        // A popup with some information about our location
+        var popup = new OpenLayers.Popup.FramedCloud("Popup",
+            myLocation.getBounds().getCenterLonLat(), null,
+            '<a target="_blank" href="http://openlayers.org/">We</a> ' +
+            'could be here.<br>Or elsewhere.', null,
+            true // <-- true if we want a close (X) button, false otherwise
+        );
+
+        // Finally we create the map
+        map = new OpenLayers.Map({
+            div: "map", projection: "EPSG:3857",
+            layers: [new OpenLayers.Layer.OSM(), overlay]
+            , center: myLocation.getBounds().getCenterLonLat(), zoom: 15
+        });
+
+
+        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+        var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        var position = new OpenLayers.LonLat(rDataLon, rDataLat).transform(fromProjection, toProjection);
+
+        map.setCenter(position, 15);
+        // and add the popup to it.
+        //map.addPopup(popup);
+
+        map.addLayers([osm, vectors]);
+        map.addControl(new OpenLayers.Control.LayerSwitcher());
+        //map.addControl(new OpenLayers.Control.MousePosition());
+
+        controls = {
+            point: new OpenLayers.Control.DrawFeature(vectors,
+                        OpenLayers.Handler.Point),
+            line: new OpenLayers.Control.DrawFeature(vectors,
+                        OpenLayers.Handler.Path),
+
+
+        };
+
+        for (var key in controls) {
+            map.addControl(controls[key]);
+        }
+
+
+
+
+    }
+
+
+</script>

@@ -1,0 +1,118 @@
+﻿@using System.Web
+@using System.Web.Optimization
+@model IEnumerable<TraceThePathAdmin.Models.RoutesInfo>
+
+@{
+    ViewBag.Title = "GetRoutes";
+}
+
+<h2>GetRoutes</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.routeid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.routeName)
+        </th>
+        <th>
+          
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.routeid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.routeName)
+            </td>
+            <td>
+              
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Navigate and View Your route here</title>
+
+    <link rel="stylesheet" href="~/Scripts/OpenLayers-2.13.1/theme/default/style.css" type="text/css">
+    <link rel="stylesheet" href="~/Scripts/OpenLayers-2.13.1/examples/style.css" type="text/css">
+    <link href="../../../tracethepathadmin/Content/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/OpenLayers-2.13.1/OpenLayers.js"></script>
+    <script src="~/Scripts/require.js"></script>
+    <script src="~/App/services/logger.js"></script>
+</head>
+
+<body>
+
+    <div id="map" class="smallmap" style='width: 1000px; height: 800px;'></div>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            @foreach (var item in Model)
+            {
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne">
+                            @item.routeName
+                        </a>
+                    </h4>
+                </div>
+                
+            }
+        </div>
+        
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#collapseFour').collapse({
+                toggle: false
+            })
+        });
+        $(function () { $('#collapseTwo').collapse('show') });
+        $(function () { $('#collapseThree').collapse('toggle') });
+        $(function () { $('#collapseOne').collapse('hide') });
+        
+        $(document).ready(function () {
+
+            LoadMap();
+})
+
+
+        function LoadMap() {
+            var map, vectors, controls, feature, data, controls;
+            //logger.log(title + 'has been Activated', null, title, true);
+
+            //logger.log('init1 view route entry');
+            map = new OpenLayers.Map('map');
+            var osm = new OpenLayers.Layer.OSM("OpenLayers OSM");
+
+            // allow testing of specific renderers via "?renderer=Canvas", etc
+            var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
+            renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
+
+            vectors = new OpenLayers.Layer.Vector("Vector Layer", {
+                renderers: renderer
+            });
+
+            map.addLayers([osm, vectors]);
+
+            map.setCenter(new OpenLayers.LonLat(0, 0), 3);
+        }
+
+    </script>
+</body>

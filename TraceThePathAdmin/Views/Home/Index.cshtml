@@ -1,0 +1,330 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@using System.Web
+@using System.Web.Optimization
+
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Navigate and View Your route here</title>
+
+    <link rel="stylesheet" href="~/Scripts/OpenLayers-2.13.1/theme/default/style.css" type="text/css">
+    <link rel="stylesheet" href="~/Scripts/OpenLayers-2.13.1/examples/style.css" type="text/css">
+    <link rel="stylesheet" href="../../../tracethepathadmin/Content/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../../../tracethepathadmin/Content/bootstrap.css" type="text/css">
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/OpenLayers-2.13.1/OpenLayers.js"></script>
+    <script src="~/Scripts/require.js"></script>
+    <!--<script src="~/App/services/logger.js"></script>-->
+</head>
+
+<body>
+    <!-- top navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Home Page</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="~/SetRoute/SetRoute">Set The Route</a></li>
+                <li><a href="~/ViewRoute/ViewRoute">View Route</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.navbar -->
+
+    <div class="container">
+        <!--<div class="row">-->
+        <div class="row-offcanvas row-offcanvas-left">
+            <div id="sidebar" class="sidebar-offcanvas">
+                <!--1<ul class="nav nav-stacked" id="sidebar" data-toggle="collapse">-->
+                <!--2<ul class="nav">-->
+                <div class="col-md-12">
+
+                </div><!--/left-->
+            </div>
+        </div>
+
+    </div><!--/container-->
+    <script type="text/javascript">
+
+        var assetSelected, routeSelected;
+        $(document).on('click', '#dropdownAssetMenuList1', function () {
+            var assetSelected = $(this).text();
+            $('#dropdownAssetMenu1').html(assetSelected + '<span class="caret"</span>');
+        });
+
+
+        $(document).on('click', '#dropdownRouteMenuList1', function () {
+            var routeSelected = $(this).text();
+            $('#dropdownRouteMenu1').html(routeSelected + '<span class="caret"</span>');
+            var routeNameAndId = routeSelected.split('-', 2);
+            var routeIdfromUI = routeNameAndId[1];
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetRouteCoordinates")",
+                data: { routeId: routeIdfromUI },
+                success: function (data) {
+                    alert("entering success of ajax ondex html");
+                    var simething = '@ViewData["RouteCoordinates"]';
+                    alert(simething);
+                },
+                failure: function (err) { alert(err); }
+
+
+            });
+            //alert("entering after ajax");
+            //var coordiantes = '@(Html.Raw(ViewData["RouteCoordinates"]) as List<TraceThePathAdmin.Models.Cordinate>)';
+            //var constantLineString = "LINESTRING(";
+
+            //var inputLineString1 = "";
+
+            //$.each(coordiantes, function (index, value) {
+            //    inputLineString1 = inputLineString1 + "\"+\"" + this.startLon + " " + this.startLat + ",";
+            //    alert(inputLineString1);
+            //});
+
+
+
+
+            //for (var cordinate in '@(Html.Raw(ViewData["RouteCoordinates"]) as List<TraceThePathAdmin.Models.Cordinate>)') {
+            /*fromWKT("LINESTRING("+"8238077.1593164 2387281.2670703,"+"8472891.7101758 2172034.5954492,"+"8766409.89875 2504688.5425,)");*/
+            //  alert(cordinate.startLon);
+            // inputLineString = inputLineString + "\"+\"" + cordinate.startLon + " " + cordinate.startLat + ",";
+
+
+            // }
+            //var finalLatLongString = constantLineString + inputLineString + ")";
+            //ViewData["LonLatToPlot"] = finalLatLongString;
+            //PlotCoordinatesOnMap();
+        }
+
+
+                );
+
+        /* activate sidebar */
+        $('#sidebar').affix({
+            offset: {
+                top: 235
+            }
+        });
+        $('.navbar-toggle').on('click', function () {
+            if (!$(this).siblings('.navbar-toggle').hasClass('collapsed')) {
+                $(this).siblings('.navbar-toggle').click();
+            }
+        });
+        /* activate scrollspy menu */
+        var $body = $(document.body);
+        var navHeight = $('.navbar').outerHeight(true) + 10;
+
+        $body.scrollspy({
+            target: '#leftCol',
+            offset: navHeight
+        });
+
+
+        $(document).ready(function () {
+            $('[data-toggle=offcanvas]').click(function () {
+                $('.row-offcanvas').toggleClass('active');
+            });
+            LoadMapToSetRoute();
+        })
+
+        var controls;
+        var routeDetails = {};
+        var routeCoordinateList = [];
+        var nodes;
+        var mapi, vectors, control, feature;
+
+        function LoadMapToSetRoute() {
+            //var mapi, vectors, control, feature;
+            mapi = new OpenLayers.Map('map');
+            var osm = new OpenLayers.Layer.OSM("OpenLayers OSM");
+
+            // allow testing of specific renderers via "?renderer=Canvas", etc
+            var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
+            renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
+
+            vectors = new OpenLayers.Layer.Vector("Vector Layer", {
+                renderers: renderer
+            });
+
+
+
+            vectors.events.on({
+                featuresadded: onFeaturesAdded
+            });
+
+            mapi.addLayers([osm, vectors]);
+            mapi.addControl(new OpenLayers.Control.LayerSwitcher());
+            controls = {
+                point: new OpenLayers.Control.DrawFeature(vectors,
+                            OpenLayers.Handler.Point),
+                line: new OpenLayers.Control.DrawFeature(vectors,
+                            OpenLayers.Handler.Path),
+
+
+            };
+
+            for (var key in controls) {
+                mapi.addControl(controls[key]);
+            }
+
+            mapi.setCenter(new OpenLayers.LonLat(0, 0), 3);
+
+        }
+        function PlotCoordinatesOnMap() {
+
+
+            var original = OpenLayers.Geometry.fromWKT(@ViewData["LonLatToPlot"]);
+
+            vectors.addFeatures([new OpenLayers.Feature.Vector(original)]);
+            var maxExtent = vectors.getDataExtent();
+
+            mapi.setCenter(new OpenLayers.LonLat(8472891.7101758, 2172034.5954492), 10);
+        }
+
+        function onFeaturesAdded(event) {
+            alert("entering feature added");
+            nodes = event.features[0].geometry.getVertices();
+
+
+            for (var i = 0; i < nodes.length; i++) {
+                var lon = nodes[i].x;
+                var lat = nodes[i].y;
+
+
+                var routeCoordinates = {};
+                routeCoordinates.seqNo = i + 1;
+                routeCoordinates.startLat = nodes[i].y;
+                routeCoordinates.startLon = nodes[i].x;
+                routeCoordinates.endLat = ' 0';
+                routeCoordinates.endLon = '0';
+                // Do several row data and do some push. In this example is just one push.
+                routeCoordinateList.push(routeCoordinates);
+            }
+            routeDetails.RouteCoordinatesList = routeCoordinateList;
+            routeDetails.routeName = document.getElementById("inputRouteName").value;
+        }
+
+        function toggleControl(element) {
+            for (var key in controls) {
+                var control = controls[key];
+                if (element.value == key) {
+                    control.activate();
+
+                } else {
+                    control.deactivate();
+                }
+
+            }
+        }
+
+        $('#createRouteName').on('click', function (e) {
+            var assetNameAndId = document.getElementById("dropdownAssetMenu1").innerText.split('-', 2);
+            var assetIdfromUI = assetNameAndId[1];
+            alert("assetIdfromUI :" + assetIdfromUI);
+            alert(document.getElementById("dropdownRouteMenu1").innerText.trim());
+            if (document.getElementById("dropdownRouteMenu1").innerText.trim() == 'Saved Routes') {
+                alert('entering if saved routes');
+                var routeIdfromUI = 0;
+            }
+            else {
+
+                var routeNameAndId = document.getElementById("dropdownRouteMenu1").innerText.split('-', 2);
+                routeIdfromUI = routeNameAndId[1];
+                alert("assetIdfromUI :" + routeIdfromUI);
+            }
+
+            var jsonData = JSON.stringify({ routeId: routeIdfromUI, routeName: document.getElementById("inputRouteName").value, assetId: assetIdfromUI, cordinates: routeCoordinateList });
+            alert(jsonData);
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("CreateRoute")",
+                data: jsonData,
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    alert("success");
+                },
+                failure: function (err) { alert(err); }
+            });
+        }
+
+        )
+    </script>
+    <style>
+        body, html, .row-offcanvas {
+            height: 100%;
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+        #sidebar {
+            width: inherit;
+            min-width: 220px;
+            max-width: 220px;
+            background-color: #f5f5f5;
+            float: left;
+            height: 100%;
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #main {
+            height: 100%;
+            overflow: auto;
+        }
+
+        /*
+            * off Canvas sidebar
+            * --------------------------------------------------
+            */
+        @@media screen and (max-width: 9000px) {
+            .row-offcanvas {
+                position: relative;
+                -webkit-transition: all 0.25s ease-out;
+                -moz-transition: all 0.25s ease-out;
+                transition: all 0.25s ease-out;
+                width: calc(100% + 220px);
+            }
+
+            .row-offcanvas-left {
+                left: -220px;
+            }
+
+                .row-offcanvas-left.active {
+                    left: 0;
+                }
+
+            .sidebar-offcanvas {
+                position: absolute;
+                top: 0;
+            }
+        }
+
+
+        html, body, #map {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</body>

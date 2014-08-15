@@ -1,0 +1,43 @@
+﻿@model TraceThePathAdmin.Models.Point
+
+@{
+    ViewBag.Title = "GetLocationInfo";
+}
+
+<h2>GetLocationInfo</h2>
+
+<fieldset>
+    <legend>Point</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.assetId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.assetId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lon)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.deviceId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.deviceId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
