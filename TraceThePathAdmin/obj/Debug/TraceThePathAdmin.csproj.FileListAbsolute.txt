@@ -74,3 +74,4 @@ C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAd
 C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\System.Web.WebPages.Razor.xml
 C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\obj\Debug\TraceThePathAdmin.dll
 C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\obj\Debug\TraceThePathAdmin.pdb
+C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\obj\Debug\TraceThePathAdmin.csprojResolveAssemblyReference.cache
