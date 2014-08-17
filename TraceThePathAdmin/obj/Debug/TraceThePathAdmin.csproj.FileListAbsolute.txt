@@ -138,3 +138,11 @@ E:\TraceThePathAdmin\TraceThePathAdmin\bin\System.Web.WebPages.Razor.xml
 E:\TraceThePathAdmin\TraceThePathAdmin\obj\Debug\TraceThePathAdmin.csprojResolveAssemblyReference.cache
 E:\TraceThePathAdmin\TraceThePathAdmin\obj\Debug\TraceThePathAdmin.dll
 E:\TraceThePathAdmin\TraceThePathAdmin\obj\Debug\TraceThePathAdmin.pdb
+C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\Antlr3.Runtime.dll
+C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\Newtonsoft.Json.dll
+C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\System.Web.Optimization.dll
+C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\WebActivatorEx.dll
+C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\WebGrease.dll
+C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\Newtonsoft.Json.xml
+C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\System.Net.Http.Formatting.xml
+C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\System.Web.Optimization.xml
