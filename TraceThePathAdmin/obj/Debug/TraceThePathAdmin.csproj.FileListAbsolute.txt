@@ -144,5 +144,4 @@ C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAd
 C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\WebActivatorEx.dll
 C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\WebGrease.dll
 C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\Newtonsoft.Json.xml
-C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\System.Net.Http.Formatting.xml
 C:\Sanjay Drive\Tracethepath\PC Web Application\TraceThePathAdmin\TraceThePathAdmin\bin\System.Web.Optimization.xml
