@@ -174,3 +174,4 @@ F:\TraceThePathAdmin\TraceThePathAdmin\bin\System.Web.WebPages.Deployment.xml
 F:\TraceThePathAdmin\TraceThePathAdmin\bin\System.Web.WebPages.Razor.xml
 F:\TraceThePathAdmin\TraceThePathAdmin\obj\Debug\TraceThePathAdmin.dll
 F:\TraceThePathAdmin\TraceThePathAdmin\obj\Debug\TraceThePathAdmin.pdb
+F:\TraceThePathAdmin\TraceThePathAdmin\obj\Debug\TraceThePathAdmin.csprojResolveAssemblyReference.cache

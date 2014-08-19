@@ -798,7 +798,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </Content>
-    <Content Include="bootstrappin\lib\.DS_Store" />
     <Content Include="bootstrappin\lib\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="bootstrappin\lib\bootstrap\css\bootstrap.css.map" />
     <Content Include="bootstrappin\lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
