@@ -24,18 +24,22 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/OpenLayers-2.13.1/OpenLayers.js"></script>
     <script src="~/Scripts/require.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="~/bootstrappin/stylesheets/theme.css">
+    <link rel="stylesheet" type="text/css" href="~/bootstrappin/stylesheets/premium.css">
+
 </head>
 
-<body>
+<body class="theme-blue">
     <!-- top navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">View Route</a>
+            <a class="navbar-brand" href="#">Transcurity</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -72,198 +76,337 @@
                 <p>
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
                 </p>
-                <!--<div id="map" class="olMap" style='width: 1300px; height: 700px;'></div>-->
-                <div>
-                    @Html.Partial("GetLocationCoordinatesByAssetId");
-                </div>
-
-
+                <div id="map" class="olMap" style='width: 1300px; height: 700px;'></div>           
             </div><!--/right-->
         </div><!--/row-->
     </div><!--/container-->
     <script type="text/javascript">
-
-    /* activate sidebar */
-    $('#sidebar').affix({
-        offset: {
-            top: 235
-        }
-    });
-    $('.navbar-toggle').on('click', function () {
-        if (!$(this).siblings('.navbar-toggle').hasClass('collapsed')) {
-            $(this).siblings('.navbar-toggle').click();
-        }
-    });
-    /* activate scrollspy menu */
-    var $body = $(document.body);
-    var navHeight = $('.navbar').outerHeight(true) + 10;
-
-    $body.scrollspy({
-        target: '#leftCol',
-        offset: navHeight
-    });
-
-    /* smooth scrolling sections */
-    $('a[href*=#]:not([href=#])').click(function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                $('html,body').animate({
-                    scrollTop: target.offset().top - 50
-                }, 1000);
-                return false;
+        var map, vectors;
+        /* activate sidebar */
+        $('#sidebar').affix({
+            offset: {
+                top: 235
             }
-        }
-    });
-
-    $(function () {
-        $('#collapseFour').collapse({
-            toggle: false
-        })
-    });
-    $(function () { $('#collapseTwo').collapse('show') });
-    $(function () { $('#collapseThree').collapse('toggle') });
-    $(function () { $('#collapseOne').collapse('hide') });
-
-    $(document).ready(function () {
-        $('[data-toggle=offcanvas]').click(function () {
-            $('.row-offcanvas').toggleClass('active');
         });
-        //LoadMap();
-    })
-
-    /*$(document).on('click', '#assetListItemId', function () {
-        alert("hi");
-        $.ajax({
-            url: "http://sanjayjdm.apphb.com/api/getlocation?appKey=ttpapikey.asxc123nju89mno0&assetId=1",
-            dataType: "json"
-        }).success(function (data) {
+        $('.navbar-toggle').on('click', function () {
+            if (!$(this).siblings('.navbar-toggle').hasClass('collapsed')) {
+                $(this).siblings('.navbar-toggle').click();
+            }
         });
-    });*/
+        /* activate scrollspy menu */
+        var $body = $(document.body);
+        var navHeight = $('.navbar').outerHeight(true) + 10;
 
+        $body.scrollspy({
+            target: '#leftCol',
+            offset: navHeight
+        });
 
-
-    $(document).on('click', '#assetListItemId', function () {
-        var assetSelected = $(this).text();
-        var assetNameAndId = assetSelected.split('-', 2);
-        var assetIdfromUI = assetNameAndId[1];
-        alert(assetIdfromUI);
-         jQuery.support.cors = true;
-        $.ajax({
-            url: 'http://sanjayjdm.apphb.com/api/getlocation',
-            type: 'GET',
-            datatype: "json",
-            data: {appKey : 'ttpapikey.asxc123nju89mno0', assetId: assetIdfromUI},
-            success: function (result) {
-                alert("entering success after get location");
-                alert(result);
-                alert(JSON.stringify(result));
-                
-                var latlonjson = JSON.stringify(result);
-                var latlonparse = JSON.parse(latlonjson);
-
-                alert(latlonparse.lat);
-            },
-            error: function (x, y, z) {
-                alert('error alert after get location');
+        /* smooth scrolling sections */
+        $('a[href*=#]:not([href=#])').click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top - 50
+                    }, 1000);
+                    return false;
+                }
             }
         });
 
-
-    }
-
-
-            );
-
-    function WriteResponse(coordinates) {
-        alert(coordinates);
-    }
-
-
-    function LoadMap() {
-        //var map, vectors, controls, feature, data, controls;
-        //logger.log(title + 'has been Activated', null, title, true);
-
-        //logger.log('init1 view route entry');
-        //map = new OpenLayers.Map('map');
-        var osm = new OpenLayers.Layer.OSM("OpenLayers OSM");
-
-        // allow testing of specific renderers via "?renderer=Canvas", etc
-        var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
-        renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
-
-        vectors = new OpenLayers.Layer.Vector("Vector Layer", {
-            renderers: renderer
-        });
-
-
-        // The overlay layer for our marker, with a simple diamond as symbol
-        var overlay = new OpenLayers.Layer.Vector('Overlay', {
-            styleMap: new OpenLayers.StyleMap({
-                externalGraphic: "../../../tracethepathadmin/Content/images/marker.png",
-                graphicWidth: 20, graphicHeight: 24, graphicYOffset: -24,
-                title: '${tooltip}'
+        $(function () {
+            $('#collapseFour').collapse({
+                toggle: false
             })
         });
+        $(function () { $('#collapseTwo').collapse('show') });
+        $(function () { $('#collapseThree').collapse('toggle') });
+        $(function () { $('#collapseOne').collapse('hide') });
+
+        $(document).ready(function () {
+            $('[data-toggle=offcanvas]').click(function () {
+                $('.row-offcanvas').toggleClass('active')
+            });
+            jQuery.support.cors = true;
+            $.ajax({
+                url: 'http://sanjayjdm.apphb.com/api/getlocation',
+                type: 'GET',
+                datatype: "json",
+                data: { appKey: 'ttpapikey.asxc123nju89mno0', assetId: "4" },
+                success: function (result) {
+                    var result1 = String(result);
+                    var vars1 = result1.split(",");
+                    var queryArray = [];
+                    for (var i = 0; i < vars1.length; i++) {
+                        var pair = vars1[i].split(":");
+                        queryArray.push({ latlon: pair[0], value: pair[1] });
+                    }
+                    LoadMapLatLon(queryArray);
+
+                },
+                error: function (x, y, z) {
+                    alert('error alert after get location');
+                }
+            });
 
 
+        })
 
-        var rDataLat = "@(viewDataPoints.lat)";
-        var rDataLon = "@(viewDataPoints.lon)";
-        var myLocation = new OpenLayers.Geometry.Point(rDataLon, rDataLat)
-                .transform('EPSG:4326', 'EPSG:3857');
 
-        // We add the marker with a tooltip text to the overlay
-        overlay.addFeatures([
-            new OpenLayers.Feature.Vector(myLocation, { tooltip: 'OpenLayers' })
-        ]);
+        $(document).on('click', '#assetListItemId', function () {
+            var assetSelected = $(this).text();
+            var assetNameAndId = assetSelected.split('-', 2);
+            var assetIdfromUI = assetNameAndId[1];
+            var auto_refresh = setInterval(function () {
+              
+                jQuery.support.cors = true;
+                            $.ajax({
+                                url: 'http://sanjayjdm.apphb.com/api/getlocation',
+                                type: 'GET',
+                                datatype: "json",
+                                data: { appKey: 'ttpapikey.asxc123nju89mno0', assetId: assetIdfromUI },
+                                success: function (result) {
+                                    var result1 = String(result);
+                                    var vars1 = result1.split(",");
+                                    var queryArray = [];
+                                    for (var i = 0; i < vars1.length; i++) {
+                                        var pair = vars1[i].split(":");
+                                        queryArray.push({ latlon: pair[0], value: pair[1] });
+                                    }
 
-        // A popup with some information about our location
-        var popup = new OpenLayers.Popup.FramedCloud("Popup",
-            myLocation.getBounds().getCenterLonLat(), null,
-            '<a target="_blank" href="http://openlayers.org/">We</a> ' +
-            'could be here.<br>Or elsewhere.', null,
-            true // <-- true if we want a close (X) button, false otherwise
-        );
+                                    ChanPushPinPostion(queryArray);
 
-        // Finally we create the map
-        map = new OpenLayers.Map({
-            div: "map", projection: "EPSG:3857",
-            layers: [new OpenLayers.Layer.OSM(), overlay]
-            , center: myLocation.getBounds().getCenterLonLat(), zoom: 15
+                                },
+                                error: function (x, y, z) {
+                                    alert('error alert after get location');
+                                }
+                            });
+                                              }, 10000);
         });
 
+        
 
-        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-        var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-        var position = new OpenLayers.LonLat(rDataLon, rDataLat).transform(fromProjection, toProjection);
+        function ChanPushPinPostion(latlonarrinput) {
 
-        map.setCenter(position, 15);
-        // and add the popup to it.
-        //map.addPopup(popup);
+            // allow testing of specific renderers via "?renderer=Canvas", etc
+            var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
+            renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
 
-        map.addLayers([osm, vectors]);
-        map.addControl(new OpenLayers.Control.LayerSwitcher());
-        //map.addControl(new OpenLayers.Control.MousePosition());
-
-        controls = {
-            point: new OpenLayers.Control.DrawFeature(vectors,
-                        OpenLayers.Handler.Point),
-            line: new OpenLayers.Control.DrawFeature(vectors,
-                        OpenLayers.Handler.Path),
+            vectors = new OpenLayers.Layer.Vector("Vector Layer", {
+                renderers: renderer
+            });
 
 
-        };
+            // The overlay layer for our marker, with a simple diamond as symbol
+            var overlay = new OpenLayers.Layer.Vector('Overlay', {
+                styleMap: new OpenLayers.StyleMap({
+                    externalGraphic: "~/../../Content/images/marker.png",
+                    graphicWidth: 20, graphicHeight: 24, graphicYOffset: -24,
+                    title: '${tooltip}'
+                })
+            });
 
-        for (var key in controls) {
-            map.addControl(controls[key]);
+            var rDataLat = latlonarrinput[0].value;
+            var rDataLon = latlonarrinput[1].value;
+            var myLocation = new OpenLayers.Geometry.Point(rDataLon, rDataLat)
+                    .transform('EPSG:4326', 'EPSG:3857');
+
+            // We add the marker with a tooltip text to the overlay
+            overlay.addFeatures([
+                new OpenLayers.Feature.Vector(myLocation, { tooltip: 'OpenLayers' })
+            ]);
+
+            // A popup with some information about our location
+            var popup = new OpenLayers.Popup.FramedCloud("Popup",
+                myLocation.getBounds().getCenterLonLat(), null,
+                '<a target="_blank" href="http://openlayers.org/">We</a> ' +
+                'could be here.<br>Or elsewhere.', null,
+                true // <-- true if we want a close (X) button, false otherwise
+            );
+
+
+            markers = new OpenLayers.Layer.Markers("Markers");
+            markers.id = "Markers";
+            map.addLayer(markers);
+
+            //var position = this.events.getMousePosition(e);
+
+            var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+            var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+            var position = new OpenLayers.LonLat(rDataLon, rDataLat).transform(fromProjection, toProjection);
+
+            var size = new OpenLayers.Size(21, 25);
+            var offset = new OpenLayers.Pixel(-(size.w / 2), -size.h);
+            var icon = new OpenLayers.Icon('~/../../Content/images/marker.png', size, offset);
+            var markerslayer = map.getLayer('Markers');
+
+            markerslayer.addMarker(new OpenLayers.Marker(position, icon));
+
+            map.setCenter(position, 15);
+
+            // Finally we create the map                
+        }
+        function LoadMap() {
+
+            //logger.log(title + 'has been Activated', null, title, true);
+
+            //logger.log('init1 view route entry');
+            //map = new OpenLayers.Map('map');
+            var osm = new OpenLayers.Layer.OSM("OpenLayers OSM");
+
+            // allow testing of specific renderers via "?renderer=Canvas", etc
+            var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
+            renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
+
+            vectors = new OpenLayers.Layer.Vector("Vector Layer", {
+                renderers: renderer
+            });
+
+
+            // The overlay layer for our marker, with a simple diamond as symbol
+            var overlay = new OpenLayers.Layer.Vector('Overlay', {
+                styleMap: new OpenLayers.StyleMap({
+                    externalGraphic: "~/../../Content/images/marker.png",
+                    graphicWidth: 20, graphicHeight: 24, graphicYOffset: -24,
+                    title: '${tooltip}'
+                })
+            });
+
+
+
+            var rDataLat = "@(viewDataPoints.lat)";
+            var rDataLon = "@(viewDataPoints.lon)";
+            var myLocation = new OpenLayers.Geometry.Point(rDataLon, rDataLat)
+                    .transform('EPSG:4326', 'EPSG:3857');
+
+            // We add the marker with a tooltip text to the overlay
+            overlay.addFeatures([
+                new OpenLayers.Feature.Vector(myLocation, { tooltip: 'OpenLayers' })
+            ]);
+
+            // A popup with some information about our location
+            var popup = new OpenLayers.Popup.FramedCloud("Popup",
+                myLocation.getBounds().getCenterLonLat(), null,
+                '<a target="_blank" href="http://openlayers.org/">We</a> ' +
+                'could be here.<br>Or elsewhere.', null,
+                true // <-- true if we want a close (X) button, false otherwise
+            );
+
+            // Finally we create the map
+            map = new OpenLayers.Map({
+                div: "map", projection: "EPSG:3857",
+                layers: [new OpenLayers.Layer.OSM(), overlay]
+                , center: myLocation.getBounds().getCenterLonLat(), zoom: 15
+            });
+
+
+            var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+            var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+            var position = new OpenLayers.LonLat(rDataLon, rDataLat).transform(fromProjection, toProjection);
+
+            map.setCenter(position, 15);
+            // and add the popup to it.
+            //map.addPopup(popup);
+
+            map.addLayers([osm, vectors]);
+            map.addControl(new OpenLayers.Control.LayerSwitcher());
+            //map.addControl(new OpenLayers.Control.MousePosition());
+
+            controls = {
+                point: new OpenLayers.Control.DrawFeature(vectors,
+                            OpenLayers.Handler.Point),
+                line: new OpenLayers.Control.DrawFeature(vectors,
+                            OpenLayers.Handler.Path),
+            };
+
+            for (var key in controls) {
+                map.addControl(controls[key]);
+            }
+
+        }
+
+        function LoadMapLatLon(latlonarray) {
+            //var map, vectors, controls, feature, data, controls;
+            //logger.log(title + 'has been Activated', null, title, true);
+
+            //logger.log('init1 view route entry');
+            //map = new OpenLayers.Map('map');
+            var osm = new OpenLayers.Layer.OSM("OpenLayers OSM");
+
+            // allow testing of specific renderers via "?renderer=Canvas", etc
+            var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
+            renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
+
+            vectors = new OpenLayers.Layer.Vector("Vector Layer", {
+                renderers: renderer
+            });
+
+
+            // The overlay layer for our marker, with a simple diamond as symbol
+            var overlay = new OpenLayers.Layer.Vector('Overlay', {
+                styleMap: new OpenLayers.StyleMap({
+                    externalGraphic: "~/../../Content/images/marker.png",
+                    graphicWidth: 20, graphicHeight: 24, graphicYOffset: -24,
+                    title: '${tooltip}'
+                })
+            });
+
+            var rDataLat = latlonarray[0].value;
+            var rDataLon = latlonarray[1].value;
+            var myLocation = new OpenLayers.Geometry.Point(rDataLon, rDataLat)
+                    .transform('EPSG:4326', 'EPSG:3857');
+
+            // We add the marker with a tooltip text to the overlay
+            overlay.addFeatures([
+                new OpenLayers.Feature.Vector(myLocation, { tooltip: 'OpenLayers' })
+            ]);
+
+            // A popup with some information about our location
+            var popup = new OpenLayers.Popup.FramedCloud("Popup",
+                myLocation.getBounds().getCenterLonLat(), null,
+                '<a target="_blank" href="http://openlayers.org/">We</a> ' +
+                'could be here.<br>Or elsewhere.', null,
+                true // <-- true if we want a close (X) button, false otherwise
+            );
+
+            // Finally we create the map
+            map = new OpenLayers.Map({
+                div: "map", projection: "EPSG:3857",
+                layers: [new OpenLayers.Layer.OSM(), overlay]
+                , center: myLocation.getBounds().getCenterLonLat(), zoom: 15
+            });
+
+
+            var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+            var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+            var position = new OpenLayers.LonLat(rDataLon, rDataLat).transform(fromProjection, toProjection);
+
+            map.setCenter(position, 15);
+            // and add the popup to it.
+            //map.addPopup(popup);
+
+            map.addLayers([osm, vectors]);
+            map.addControl(new OpenLayers.Control.LayerSwitcher());
+            //map.addControl(new OpenLayers.Control.MousePosition());
+
+            controls = {
+                point: new OpenLayers.Control.DrawFeature(vectors,
+                            OpenLayers.Handler.Point),
+                line: new OpenLayers.Control.DrawFeature(vectors,
+                            OpenLayers.Handler.Path),
+
+
+            };
+
+            for (var key in controls) {
+                map.addControl(controls[key]);
+            }
+
         }
 
 
-
-
-    }
 
     </script>
     <style>
@@ -324,6 +467,10 @@
             margin: 0;
             width: 100%;
             height: 100%;
+        }
+
+        .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover { 
+            color: #fff;
         }
     </style>
 </body>
