@@ -68,12 +68,20 @@ namespace TraceThePathAdmin.Controllers
 
                 AssetInfo assetInfo1 = new AssetInfo();
                 assetInfo1.assetid = 1;
-                assetInfo1.assetName = "testassetname1";
+                assetInfo1.assetName = "UKCarforDemo";
                 AssetInfo assetInfo2 = new AssetInfo();
                 assetInfo2.assetid = 2;
-                assetInfo2.assetName = "testassetname2";
+                assetInfo2.assetName = "AssetNotForDemo";
+                AssetInfo assetInfo3 = new AssetInfo();
+                assetInfo3.assetid = 3;
+                assetInfo3.assetName = "AssetNotForDemo";
+                AssetInfo assetInfo4 = new AssetInfo();
+                assetInfo4.assetid = 4;
+                assetInfo4.assetName = "BglCarForDemo";
                 assetInfoList.Add(assetInfo1);
                 assetInfoList.Add(assetInfo2);
+                assetInfoList.Add(assetInfo3);
+                assetInfoList.Add(assetInfo4);
 
             }
             catch (Exception exep)

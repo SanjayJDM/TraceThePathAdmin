@@ -297,21 +297,16 @@
         $('#createRouteName').on('click', function (e) {
             var assetNameAndId = document.getElementById("dropdownAssetMenu1").innerText.split('-', 2);
             var assetIdfromUI = assetNameAndId[1];
-            alert("assetIdfromUI :" + assetIdfromUI);
-            alert(document.getElementById("dropdownRouteMenu1").innerText.trim());
             if (document.getElementById("dropdownRouteMenu1").innerText.trim() == 'Saved Routes') {
-                alert('entering if saved routes');
                 var routeIdfromUI = 0;
             }
             else {
 
                 var routeNameAndId = document.getElementById("dropdownRouteMenu1").innerText.split('-', 2);
                 routeIdfromUI = routeNameAndId[1];
-                alert("assetIdfromUI :" + routeIdfromUI);
             }
 
             var jsonData = JSON.stringify({ routeId: routeIdfromUI, routeName: document.getElementById("inputRouteName").value, assetId: assetIdfromUI, cordinates: routeCoordinateList });
-            alert(jsonData);
 
             $.ajax({
                 type: "POST",

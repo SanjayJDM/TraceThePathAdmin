@@ -91,10 +91,7 @@ namespace TraceThePathAdmin.Controllers
                         {
                             routeIdFromRouteName = route.routeid;
                         }
-                        else
-                        {
-                            routeIdFromRouteName = 0;
-                        }
+                        
                     }
                 }
             }
